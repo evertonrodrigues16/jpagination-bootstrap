@@ -152,12 +152,12 @@ function generate(divId, allItems, perPage){
         var act='';
         if (i==0){act=' active'}
         
-        var text = '<li id="btn' + (i+1) + '" class="btn-pagination'+act+'"><a href="#portfolio" onclick="splitItems('+ arg +', ' + perPage + ', ' + (i+1) + ')">' + (i+1) + '<span class="sr-only">(current)</span></a></li>';
+        var text = '<li id="btn' + (i+1) + '" class="btn-pagination'+act+'"><a href="#" onclick="splitItems('+ arg +', ' + perPage + ', ' + (i+1) + ')">' + (i+1) + '<span class="sr-only">(current)</span></a></li>';
         dom.innerHTML += text;
     }
-    var header = '<li id="btnPrevious" class="disabled"><a href="#portfolio" onclick="splitItems(-2, ' + perPage + ', \'previous\')" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>';
+    var header = '<li id="btnPrevious" class="disabled"><a href="#" onclick="splitItems(-2, ' + perPage + ', \'previous\')" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>';
     
-    var footer = '<li id="btnNext"><a href="#portfolio" onclick="splitItems(-1, ' + perPage + ', \'next\')" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>';
+    var footer = '<li id="btnNext"><a href="#" onclick="splitItems(-1, ' + perPage + ', \'next\')" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>';
     dom.innerHTML = header + dom.innerHTML + footer;
 
     showFirstItens(perPage);
