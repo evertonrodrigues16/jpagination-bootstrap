@@ -1,13 +1,22 @@
 # jpagination-bootstrap
-This project aims to facilitate the implementation of dynamic pagination using jQuery, css and Bootstrap. With only 3 calls the paging is created dynamically.
+This project aims to facilitate the implementation of dynamic pagination using jQuery, css and Bootstrap. With only 5 calls the paging is created dynamically.
 
 # How to use:
 
 * Step 1 is to link the application to the jpagination.css and jpagination.js file.
 
+      <link rel="stylesheet" href="jpagination.min.css">
+      <script src="jpagination.min.js"></script>
+      
 * Step 2 is to link the dependencies of jQuery and Bootstrap.
 
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 * Step 3 is to add the 'item' class to the dynamic object to be paginated.
+
+      <div class="col-xs-3 item">col1</div>
 
 * Step 4 is to create the markup to receive the buttons on the pages.
 
