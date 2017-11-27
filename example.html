@@ -4,9 +4,16 @@
   <title>Bootstrap Example</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- includ dependency bootstrap css file-->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- includ jpagination css file -->
+  <link rel="stylesheet" href="jpagination.min.css">
+  <!-- includ dependency jquery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- includ dependency bootstrap js file-->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- includ jpagination js file -->
+  <script src="jpagination.min.js"></script>
 </head>
 <body>
 
@@ -16,6 +23,7 @@
   
   <div class="container">
   	<div class="row">
+        <!-- include the class item where the pagination will be done -->
     	<div class="col-xs-3 item">col1</div>
         <div class="col-xs-3 item">col2</div>
         <div class="col-xs-3 item">col3</div>
@@ -36,190 +44,38 @@
         <div class="col-xs-3 item">col18</div>
         <div class="col-xs-3 item">col19</div>
         <div class="col-xs-3 item">col20</div>
+        <div class="col-xs-3 item">col21</div>
+        <div class="col-xs-3 item">col22</div>
+        <div class="col-xs-3 item">col23</div>
+        <div class="col-xs-3 item">col24</div>
+        <div class="col-xs-3 item">col25</div>
+        <div class="col-xs-3 item">col26</div>
+        <div class="col-xs-3 item">col27</div>
+        <div class="col-xs-3 item">col28</div>
+        <div class="col-xs-3 item">col29</div>
+        <div class="col-xs-3 item">col30</div>
+        <div class="col-xs-3 item">col31</div>
+        <div class="col-xs-3 item">col32</div>
+        <div class="col-xs-3 item">col33</div>
+        <div class="col-xs-3 item">col34</div>
+        <div class="col-xs-3 item">col35</div>
+        <div class="col-xs-3 item">col36</div>
+        <div class="col-xs-3 item">col37</div>
+        <div class="col-xs-3 item">col38</div>
+        <div class="col-xs-3 item">col39</div>
+        <div class="col-xs-3 item">col40</div>
     </div>
   </div>
-  
+  <!-- include the ul tags where navigation will be created. It should contain the class and id pagination -->
   <ul class="pagination" id="pagination">
   </ul>
 </div>
-<style>
-    .item{
-    	display: none;
-    }
-</style>
+<!-- call jQuery function to initialize pagination -->
 <script>
-			$(document).ready(function(){
-                generate('pagination', 20, 8)
-	        });
-            
-            //document js
-var memory;
-var numberPages;
-var numIdActive=1;
-var btnId;
-var all;
-
-function block(btnId){
-    document.getElementById(btnId).className = 'disabled';
-}
-function unlock(btnId){
-    document.getElementById(btnId).className = '';
-}
-
-function splitItems(arg, perPage, btnIdArg) {
-    btnId = btnIdArg;
-    switch (arg){
-        case -2:
-            //verificar se o memory é diferente nulo, ou seja não estou na 1ª casa
-            if (memory!=null){
-              //se não é null mesmo assim ainda posso estar na primeira casa
-              //verificar se já estou na primeira casa
-              if (memory==perPage){
-                  //se sim, não fazer nada                            
-              }
-              else{
-                //se não é null e se ainda não estou na primeira casa
-                //atualizo a paginação de memory
-                memory -= perPage;
-                //exibo os items
-                showItems(perPage);
-
-              }
-            }else{//se já estou na primeira casa preciso apenas atribuir o perPage ao memory
-                memory=perPage;                        
-            }
-        break;
-        case -1:
-            //verificar se estou avançando da primeira página
-            if (memory==null || memory==perPage){
-                //se estou na 1 casa, devo atribuir o perPage*2 ao memory, para que possa ir para a próxima pagina
-                memory=(perPage*2);
-                //e em seguida exibo os items
-                showItems(perPage);
-            }
-            else{//se não estou na 1 primeira casa
-            //procuro saber se estou na ultima
-                if((memory/perPage) == numberPages){
-                    //se sim não faço nada
-                }
-                else{//se não estou na ultima casa
-                    //devo incrementar o memory em mais um perPage
-                    memory+=perPage;
-                    //e em seguida exibir os items
-                    showItems(perPage);
-                
-                }
-            
-            }                        
-        break;
-        default:
-            //se cliquei no botão numerico
-            //irei receber o argumento até o qual farei o loop para exibir os items
-            memory = arg;
-            showItems(perPage);
-        break;                    
-    }
-    //verificar se memory é igual a perPage ou seja primeira pagina
-    if(memory==perPage){
-    //se sim bloquei botão previous
-        block('btnPrevious');
-    }
-    else{
-    //se não desbloqueia
-        unlock('btnPrevious');
-    }
-    //verificar se está na ultima página
-    if ((memory/perPage) == numberPages){
-    //se sim bloqueia o botão next
-        block('btnNext');              	
-    }
-    else{
-    //se não desbloqueia
-        unlock('btnNext');
-    }
-}
-function activate(btnId){
-	
-    
-    if(btnId == 'next'){
-    	numIdActive += 1;
-    	btnId = 'btn' + numIdActive;
-    }
-    else{
-    	if(btnId == 'previous'){
-        	numIdActive -= 1;
-        	btnId = 'btn' + numIdActive;
-        }
-        else{
-        	numIdActive = btnId;
-        	btnId = 'btn' + numIdActive;
-        }
-    }
-    //alert(btnId);
-    
-    //btnId = 'btn' + numIdActive;
-    var dom = document.getElementsByClassName("btn-pagination");
-    
-    for(var i=0;i<dom.length;i++)
-    {
-        dom[i].className = 'btn-pagination';
-    }
-    document.getElementById(btnId).className += ' active';
-
-}
-function showItems(perPage){
-    var dom = document.getElementsByClassName("item");
-    for(var i=0;i<dom.length;i++)
-    {
-        dom[i].style.display = 'none';
-    }
-    var cont=0;
-    if (memory>all){
-        cont = all;
-    }
-    else{
-        cont=memory;
-    }
-    for (var i = (memory-perPage); i < cont; i++)
-    {
-        dom[i].style.display = 'block';
-    }
-    activate(btnId);
-}
-function showFirstItens(perPage){
-    var dom = document.getElementsByClassName("item");
-    for(var i=0;i<perPage;i++)
-    {
-        dom[i].style.display = 'block';
-    }
-}
-
-function generate(divId, allItems, perPage, section=''){
-    numberPages = Math.ceil(allItems/perPage);
-    all = allItems;
-    var dom = document.getElementById(divId);
-    var arg = 0;
-    dom.innerHTML = '';
-
-    for (var i=0; i<numberPages; i++)
-    {
-        arg += perPage;
-        var act='';
-        if (i==0){act=' active'}
-        
-        var text = '<li id="btn' + (i+1) + '" class="btn-pagination'+act+'"><a href="#portfolio" onclick="splitItems('+ arg +', ' + perPage + ', ' + (i+1) + ')">' + (i+1) + '<span class="sr-only">(current)</span></a></li>';
-        dom.innerHTML += text;
-    }
-    var header = '<li id="btnPrevious" class="disabled"><a href="#portfolio" onclick="splitItems(-2, ' + perPage + ', \'previous\')" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>';
-    
-    var footer = '<li id="btnNext"><a href="#portfolio" onclick="splitItems(-1, ' + perPage + ', \'next\')" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>';
-    dom.innerHTML = header + dom.innerHTML + footer;
-
-    showFirstItens(perPage);
-}
-            
-            
-            
+    /* in the generate function three arguments are needed: id of ul navigation, total of items and items per page */
+    jQuery(document).ready(function(){
+        generate('pagination', 40, 8)
+    });
 </script>
 
 </body>
