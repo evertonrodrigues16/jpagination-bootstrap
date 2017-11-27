@@ -20,12 +20,11 @@ This project aims to facilitate the implementation of dynamic pagination using j
 
 * Step 4 is to create the markup to receive the buttons on the pages.
 
-      <ul class = "pagination" id = "pagination">
-      </ul>
+      <ul class = "pagination" id = "pagination"></ul>
 
 * Step 5 is to make the jQuery call at the bottom of the page.
 
-      $ (document) .ready (function () {generate ('pagination', countItems, itemsPerPage)});
+      jQuery(document).ready(function(){generate('pagination', countItems, itemsPerPage)});
     
 * replace countItems by the total amount of items to display.
 
